@@ -1,0 +1,28 @@
+<div style="padding:40px;margin:40px;border:1px solid #ccc">
+    <h1>Select options</h1>
+    <form action="{% url 'generateQuestionBank' %}" method="post">
+        {% csrf_token %}
+        {% for chapQues in questions %}
+        
+        <input type="checkbox" name="recommendations" id="choice{{forloop.counter}}" value="{{ forloop.counter }}" />
+        <label for="choice{{forloop.counter}}">Chapter {{forloop.counter}}</label>
+        </br>
+        
+        {% endfor %}
+        </br>
+        </br>
+        {% for i in "x"|ljust:"5" %}
+        
+        <input type="checkbox" name="recommendations2" id="choice{{forloop.counter}}" value="{{ forloop.counter }}" />
+        <label for="choice{{forloop.counter}}">Question Type {{forloop.counter}}</label>
+        </br>
+        
+        {% endfor %}
+        </br>
+        <p>Enter number of Questions: <input type="number" name="ques_nos" id="ques_nos" /> </p>
+
+        </br>
+        </br>
+        <input type="submit" value="Submit" />
+    </form>    
+</div>
