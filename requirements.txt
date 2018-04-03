@@ -1,0 +1,4 @@
+numpy
+docx
+openpxyl
+django
