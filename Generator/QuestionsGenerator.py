@@ -112,6 +112,21 @@ def generateBank(file, questions, chap_nos, selected_chaps, qtypes, ques_nos):
 			document.add_paragraph("")
 		document.add_page_break()
 	document.save('./media/Banks/Bank.docx')
+
+def generateAllQuestionsBank(questions, chap_nos, selected_chaps, qtypes):
+
+	document = Document()
+	for i in range(0, chap_nos):
+		if( i+1 in selected_chaps):
+			document.add_paragraph("Chapter " + str(i+1))
+			for j in range(0, 5):
+				if( j+1 in qtypes):
+					document.add_paragraph("Question Type: "+str(j+1))
+					for k in range(0, len(questions[i][j])):
+						document.add_paragraph(str(k+1)+". "+questions[i][j][k])
+			document.add_paragraph("")
+		document.add_page_break()
+	document.save('./media/Banks/Bank.docx')
 	
 
 

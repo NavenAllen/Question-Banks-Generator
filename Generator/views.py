@@ -2,7 +2,7 @@ from django.shortcuts import render
 from Generator.models import UploadForm,Upload
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .QuestionsGenerator import handle_file, generateBank
+from .QuestionsGenerator import handle_file, generateBank, generateAllQuestionsBank
 
 # Create your views here.
 def home(request):
@@ -25,6 +25,10 @@ def generateQuestionBank(request):
     selected_chaps = list(map(int, request.POST.getlist('recommendations')))
     selected_qtypes = list(map(int, request.POST.getlist('recommendations2')))
     ques_nos = request.POST['ques_nos']
-    generateBank(file.pic.url, questions, chap_nos, selected_chaps, selected_qtypes, ques_nos)
+    prev_perf = request.POST.get('prev_pref', False)
+    if(prev_perf):
+        generateBank(file.pic.url, questions, chap_nos, selected_chaps, selected_qtypes, ques_nos)
+    else:
+        generateAllQuestionsBank(questions, chap_nos,selected_chaps, selected_qtypes)
 
     return render(request, 'result.html')

@@ -12,7 +12,8 @@ tests/coverage_html/
 tests/.coverage
 build/
 tests/report/
-media/
+media/Banks/*
+media/images/*
 
 # Sensitive Data
 credentials.py
